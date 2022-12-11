@@ -13,8 +13,6 @@ func main() {
 		})
 	})
 
-	r.Init()
-
 	r.NewClient()
 
 	router.Run("localhost:8080")
