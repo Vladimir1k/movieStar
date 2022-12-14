@@ -20,7 +20,7 @@ func init() {
 
 }
 
-func NewClient() {
+func NewClient() (*pgx.Conn, error) {
 	var sc = StorageConfig{
 		os.Getenv("USERNAME"),
 		os.Getenv("PASSWORD"),
@@ -34,10 +34,11 @@ func NewClient() {
 	conn, err := pgx.Connect(context.Background(), dsn)
 	if err != nil {
 		fmt.Printf("Unable to connect to database: %v\n", err)
-		return
+		return nil, err
 	}
 
-	defer conn.Close(context.Background())
+	//defer conn.Close(context.Background())
 
 	fmt.Println("DATABASE CONNECT")
+	return conn, err
 }
