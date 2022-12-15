@@ -37,8 +37,6 @@ func NewClient() (*pgx.Conn, error) {
 		return nil, err
 	}
 
-	//defer conn.Close(context.Background())
-
 	fmt.Println("DATABASE CONNECT")
 	return conn, err
 }
